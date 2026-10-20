@@ -170,7 +170,7 @@ h1 span{color:var(--rani)}
 
       <g transform="translate(272 40)"><rect x="-13" y="-12" width="30" height="30" rx="4" fill="#2F5A2A" opacity=".16"/><rect x="-15" y="-15" width="30" height="30" rx="4" fill="#FFF7EA"/><circle r="10.5" fill="#2E9E62"/><circle cx="-3" cy="-3" r="4.6" fill="#62C48F"/><circle r="2.2" fill="#E8C24A"/><circle cx="-11" cy="-11" r="2.3" fill="#2E9E62"/><circle cx="11" cy="-11" r="2.3" fill="#2E9E62"/><circle cx="-11" cy="11" r="2.3" fill="#2E9E62"/><circle cx="11" cy="11" r="2.3" fill="#2E9E62"/></g>
       <!-- chai dhaba -->
-      <g transform="translate(212 540)">
+      <g transform="translate(205 398)">
         <rect x="-11" y="-6" width="26" height="16" rx="3" fill="#2F5A2A" opacity=".15"/>
         <rect x="-12" y="-8" width="24" height="14" rx="2" fill="#93C6D8"/>
         <path d="M-12,-4H12M-12,0H12M-12,4H12" stroke="#74ACC1" stroke-width="1"/>
@@ -359,12 +359,12 @@ RIVERS.forEach(r=>{
 });
 
 /* fields */
-const FIELDS=[[268,430,60,38,"wheat",-4],[148,392,54,34,"mustard",5],[212,232,84,46,"green",4]];
+const FIELDS=[[268,430,60,38,"wheat",-4],[140,350,46,32,"mustard",5],[212,232,84,46,"green",4]];
 [[34,40,52,90],[78,110,46,80],[30,175,56,95],[74,250,48,85],[28,315,58,100],[70,395,50,85],[26,465,56,95],[66,540,50,80],[22,600,52,70]].forEach(([cx,ty,w,h])=>{const g=$("hills"),b=ty+h;el("path",{d:`M${cx-w},${b} C${cx-w*.6},${ty+h*.5} ${cx-w*.25},${ty+h*.1} ${cx},${ty} C${cx+w*.25},${ty+h*.1} ${cx+w*.6},${ty+h*.5} ${cx+w},${b}Z`,fill:"url(#hill)"},g);el("path",{d:`M${cx},${ty} C${cx+w*.25},${ty+h*.1} ${cx+w*.6},${ty+h*.5} ${cx+w},${b} L${cx+w*.15},${b} C${cx+w*.1},${ty+h*.5} ${cx+w*.05},${ty+h*.2} ${cx},${ty}Z`,fill:"#A97C55",opacity:.32},g);el("path",{d:`M${cx},${ty} C${cx+w*.08},${ty+h*.06} ${cx+w*.14},${ty+h*.12} ${cx+w*.18},${ty+h*.17} C${cx+w*.06},${ty+h*.2} ${cx-w*.02},${ty+h*.14} ${cx-w*.16},${ty+h*.19} C${cx-w*.12},${ty+h*.12} ${cx-w*.06},${ty+h*.06} ${cx},${ty}Z`,fill:"#fff",opacity:.9},g);});
 FIELDS.forEach(([x,y,w,h,f,r])=>el("rect",{x,y,width:w,height:h,rx:10,fill:`url(#${f})`,transform:`rotate(${r} ${x+w/2} ${y+h/2})`},$("fields")));
 
 /* trees */
-const avoid=FIELDS.map(([x,y,w,h])=>[x-8,y-8,x+w+8,y+h+8]).concat([[152,80,246,146],[245,12,302,70],[190,508,238,562],[262,368,386,404],[130,620,172,660],[-20,-20,112,700],[296,362,386,402]]);
+const avoid=FIELDS.map(([x,y,w,h])=>[x-8,y-8,x+w+8,y+h+8]).concat([[152,80,246,146],[245,12,302,70],[184,372,226,420],[262,368,386,404],[130,620,172,660],[-20,-20,112,700],[296,362,386,402]]);
 const inRect=(x,y)=>avoid.some(([a,b,c,d])=>x>a&&x<c&&y>b&&y<d);
 const nearRoad=(x,y,m)=>{ for(let i=0;i<SAMPLES.length;i+=3){ const s=SAMPLES[i]; if((s[1]-x)**2+(s[2]-y)**2<m*m) return true; } return false; };
 const nearRiver=(x,y)=>riverSamples.some(([rx,ry,rw])=>(rx-x)**2+(ry-y)**2<(rw+10)**2);
@@ -410,8 +410,8 @@ for(let i=0,placed=0;i<1600&&placed<80;i++){ const x=rnd()*400,y=rnd()*660; if(i
 const LEAD_START=nearestL(215,600), END=TOTAL-8;
 const STOPS=[
   {name:"Dera Ghazi Khan", L:LEAD_START, lab:[112,604], kind:"start", msg:"Baraat nikal rahi hai!", sub:"Roll-out"},
-  {name:"Shah Sadar Din", at:[158,540], lab:[238,506], msg:"Chai break! Stretch your legs", sub:"Shah Sadar Din", pause:3.2},
-  {name:"Shadan Lund", at:[262,395], lab:[314,424], msg:"Halfway! Barrage road on the right", sub:"Junction"},
+  {name:"Shah Sadar Din", at:[158,540], lab:[238,506], msg:"Koh-e-Suleman on our left!", sub:"Shah Sadar Din"},
+  {name:"Shadan Lund", at:[262,395], lab:[314,424], msg:"Chai break! Stretch your legs", sub:"Shadan Lund", pause:3.2},
   {name:"Taunsa Sharif", L:END, lab:[180,164], kind:"end", msg:"Baraat has arrived!", sub:"Destination"}
 ];
 STOPS.forEach((s,i)=>{
