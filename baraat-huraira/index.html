@@ -152,7 +152,7 @@ h1 span{color:var(--rani)}
 
       <g id="rivers" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
       <text class="river" x="352" y="300">Indus</text>
-      <g transform="translate(337 112) rotate(-8)"><ellipse cx="0" cy="12" rx="30" ry="5" fill="#fff" opacity=".7"/><rect x="-38" y="-7" width="76" height="14" rx="3" fill="#BDB8CA"/><path d="M-30,-7V7M-20,-7V7M-10,-7V7M0,-7V7M10,-7V7M20,-7V7M30,-7V7" stroke="#8E88A0" stroke-width="1.4"/><rect x="-40" y="-9" width="80" height="3" rx="1.5" fill="#EEEBF3"/></g>
+      <text class="river" x="298" y="364">Taunsa Barrage</text><g transform="translate(340 382) rotate(-6)"><ellipse cx="0" cy="12" rx="30" ry="5" fill="#fff" opacity=".7"/><rect x="-38" y="-7" width="76" height="14" rx="3" fill="#BDB8CA"/><path d="M-30,-7V7M-20,-7V7M-10,-7V7M0,-7V7M10,-7V7M20,-7V7M30,-7V7" stroke="#8E88A0" stroke-width="1.4"/><rect x="-40" y="-9" width="80" height="3" rx="1.5" fill="#EEEBF3"/></g>
 
       <g id="trees"></g>
 
@@ -170,7 +170,7 @@ h1 span{color:var(--rani)}
 
       <g transform="translate(272 40)"><rect x="-13" y="-12" width="30" height="30" rx="4" fill="#2F5A2A" opacity=".16"/><rect x="-15" y="-15" width="30" height="30" rx="4" fill="#FFF7EA"/><circle r="10.5" fill="#2E9E62"/><circle cx="-3" cy="-3" r="4.6" fill="#62C48F"/><circle r="2.2" fill="#E8C24A"/><circle cx="-11" cy="-11" r="2.3" fill="#2E9E62"/><circle cx="11" cy="-11" r="2.3" fill="#2E9E62"/><circle cx="-11" cy="11" r="2.3" fill="#2E9E62"/><circle cx="11" cy="11" r="2.3" fill="#2E9E62"/></g>
       <!-- chai dhaba -->
-      <g transform="translate(298 556)">
+      <g transform="translate(212 540)">
         <rect x="-11" y="-6" width="26" height="16" rx="3" fill="#2F5A2A" opacity=".15"/>
         <rect x="-12" y="-8" width="24" height="14" rx="2" fill="#93C6D8"/>
         <path d="M-12,-4H12M-12,0H12M-12,4H12" stroke="#74ACC1" stroke-width="1"/>
@@ -185,7 +185,8 @@ h1 span{color:var(--rani)}
       </g>
 
       <!-- road -->
-      <path id="roadShadow" fill="none" stroke="#3A2A40" stroke-opacity=".2" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 4)" filter="url(#blur)"/>
+      <path d="M262,395 C285,392 300,388 322,384" fill="none" stroke="#F6EEDF" stroke-width="20" stroke-linecap="round"/><path d="M262,395 C285,392 300,388 322,384" fill="none" stroke="#605A72" stroke-width="13" stroke-linecap="round"/>
+<path id="roadShadow" fill="none" stroke="#3A2A40" stroke-opacity=".2" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 4)" filter="url(#blur)"/>
       <path id="kerb" fill="none" stroke="#F6EEDF" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
       <path id="asphalt" fill="none" stroke="#605A72" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
       <path id="trail" fill="none" stroke="#FF8AB0" stroke-opacity=".7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -211,7 +212,7 @@ h1 span{color:var(--rani)}
     </svg>
     <canvas id="fx" aria-hidden="true"></canvas>
 
-    <div class="hud" aria-hidden="true"><b id="spd">000</b><span>KM/H</span><b id="odo">000</b><span>KM</span><div class="next" id="next">Next: Indus Highway</div></div>
+    <div class="hud" aria-hidden="true"><b id="spd">000</b><span>KM/H</span><b id="odo">000</b><span>KM</span><div class="next" id="next">Next: Shah Sadar Din</div></div>
     <button class="fab sound" id="mute" type="button" aria-pressed="false">SOUND<br>ON</button>
     <div class="toast" id="toast" role="status"></div>
     <div class="arrived" id="arrived" aria-live="polite">
@@ -348,7 +349,7 @@ function at(l){ l=Math.max(0,Math.min(TOTAL,l)); const p=road.getPointAtLength(l
 const trail=$("trail"); trail.style.strokeDasharray=TOTAL+" "+TOTAL; trail.style.strokeDashoffset=TOTAL;
 
 /* rivers */
-const RIVERS=[{w:24,pts:[[330,-10],[340,90],[318,200],[335,320],[350,420],[390,500],[430,560]]},{w:6,pts:[[80,330],[130,345],[190,372],[250,372],[300,385],[345,395]]}];
+const RIVERS=[{w:24,pts:[[330,-10],[340,90],[318,200],[335,320],[350,420],[390,500],[430,560]]}];
 const riverSamples=[];
 RIVERS.forEach(r=>{
   const d=smooth(r.pts);
@@ -358,12 +359,12 @@ RIVERS.forEach(r=>{
 });
 
 /* fields */
-const FIELDS=[[262,462,60,38,"wheat",-4],[148,392,54,34,"mustard",5],[212,232,84,46,"green",4]];
+const FIELDS=[[268,430,60,38,"wheat",-4],[148,392,54,34,"mustard",5],[212,232,84,46,"green",4]];
 [[34,40,52,90],[78,110,46,80],[30,175,56,95],[74,250,48,85],[28,315,58,100],[70,395,50,85],[26,465,56,95],[66,540,50,80],[22,600,52,70]].forEach(([cx,ty,w,h])=>{const g=$("hills"),b=ty+h;el("path",{d:`M${cx-w},${b} C${cx-w*.6},${ty+h*.5} ${cx-w*.25},${ty+h*.1} ${cx},${ty} C${cx+w*.25},${ty+h*.1} ${cx+w*.6},${ty+h*.5} ${cx+w},${b}Z`,fill:"url(#hill)"},g);el("path",{d:`M${cx},${ty} C${cx+w*.25},${ty+h*.1} ${cx+w*.6},${ty+h*.5} ${cx+w},${b} L${cx+w*.15},${b} C${cx+w*.1},${ty+h*.5} ${cx+w*.05},${ty+h*.2} ${cx},${ty}Z`,fill:"#A97C55",opacity:.32},g);el("path",{d:`M${cx},${ty} C${cx+w*.08},${ty+h*.06} ${cx+w*.14},${ty+h*.12} ${cx+w*.18},${ty+h*.17} C${cx+w*.06},${ty+h*.2} ${cx-w*.02},${ty+h*.14} ${cx-w*.16},${ty+h*.19} C${cx-w*.12},${ty+h*.12} ${cx-w*.06},${ty+h*.06} ${cx},${ty}Z`,fill:"#fff",opacity:.9},g);});
 FIELDS.forEach(([x,y,w,h,f,r])=>el("rect",{x,y,width:w,height:h,rx:10,fill:`url(#${f})`,transform:`rotate(${r} ${x+w/2} ${y+h/2})`},$("fields")));
 
 /* trees */
-const avoid=FIELDS.map(([x,y,w,h])=>[x-8,y-8,x+w+8,y+h+8]).concat([[152,80,246,146],[245,12,302,70],[274,526,324,586],[130,620,172,660],[-20,-20,112,700],[292,92,384,132]]);
+const avoid=FIELDS.map(([x,y,w,h])=>[x-8,y-8,x+w+8,y+h+8]).concat([[152,80,246,146],[245,12,302,70],[190,508,238,562],[262,368,386,404],[130,620,172,660],[-20,-20,112,700],[296,362,386,402]]);
 const inRect=(x,y)=>avoid.some(([a,b,c,d])=>x>a&&x<c&&y>b&&y<d);
 const nearRoad=(x,y,m)=>{ for(let i=0;i<SAMPLES.length;i+=3){ const s=SAMPLES[i]; if((s[1]-x)**2+(s[2]-y)**2<m*m) return true; } return false; };
 const nearRiver=(x,y)=>riverSamples.some(([rx,ry,rw])=>(rx-x)**2+(ry-y)**2<(rw+10)**2);
@@ -378,7 +379,7 @@ for(let i=0,placed=0;i<1600&&placed<80;i++){ const x=rnd()*400,y=rnd()*660; if(i
 
 
 /* bridges */
-[[255,372]].forEach(([x,y])=>{
+[].forEach(([x,y])=>{
   const p=at(nearestL(x,y)); const g=el("g",{transform:`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${p.ang.toFixed(1)})`},$("bridges"));
   el("rect",{x:-16,y:-21,width:34,height:46,rx:4,fill:"#2F2340",opacity:.16},g);
   el("rect",{x:-17,y:-21,width:34,height:42,rx:3,fill:"#D6AA7F"},g);
@@ -409,9 +410,8 @@ for(let i=0,placed=0;i<1600&&placed<80;i++){ const x=rnd()*400,y=rnd()*660; if(i
 const LEAD_START=nearestL(215,600), END=TOTAL-8;
 const STOPS=[
   {name:"Dera Ghazi Khan", L:LEAD_START, lab:[112,604], kind:"start", msg:"Baraat nikal rahi hai!", sub:"Roll-out"},
-  {name:"Indus Highway", at:[150,515], lab:[222,524], msg:"Koh-e-Suleman on our left!", sub:"N-55"},
-  {name:"Rod Kohi", at:[255,372], lab:[310,364], msg:"Crossing the hill torrent", sub:"Bridge"},
-  {name:"Taunsa Barrage", at:[268,165], lab:[330,192], msg:"Taunsa Barrage in sight!", sub:"Almost there"},
+  {name:"Shah Sadar Din", at:[158,540], lab:[238,506], msg:"Chai break! Stretch your legs", sub:"Shah Sadar Din", pause:3.2},
+  {name:"Shadan Lund", at:[262,395], lab:[314,424], msg:"Halfway! Barrage road on the right", sub:"Junction"},
   {name:"Taunsa Sharif", L:END, lab:[180,164], kind:"end", msg:"Baraat has arrived!", sub:"Destination"}
 ];
 STOPS.forEach((s,i)=>{
@@ -506,7 +506,7 @@ el("circle",{cx:0,cy:0,r:32,fill:"transparent"},leadG);
 function ribbonD(y0,ph,amp){ let d=`M-25,${y0}`; for(let i=1;i<=8;i++){ const x=-25-i*3.3, y=y0+Math.sin(ph+i*.8)*amp*(i/8)+(y0>0?i*.4:-i*.4); d+=` L${x.toFixed(1)},${y.toFixed(1)}`; } return d; }
 
 /* ---------- state ---------- */
-let L=LEAD_START, v=0, mode="idle", reached=1, dragTo=null, lastPuff=0, phase=0, touched=false;
+let L=LEAD_START, v=0, mode="idle", reached=1, dragTo=null, lastPuff=0, phase=0, touched=false, pauseUntil=0;
 const VMAX=120;
 let toastT;
 function toast(t,s){ const e=$("toast"); e.innerHTML=(s?`<small>${s}</small>`:"")+t; e.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(()=>e.classList.remove("show"),2300); }
@@ -517,7 +517,7 @@ function markStop(i,quiet){
     if(i<STOPS.length-1) toast(s.msg,s.sub); }
 }
 function resetTrip(){
-  L=LEAD_START; v=0; reached=1; STOPS.forEach((s,i)=>{ s.wp.classList.toggle("on",i===0); s.li.classList.toggle("on",i===0); });
+  L=LEAD_START; v=0; reached=1; pauseUntil=0; STOPS.forEach(s=>s.paused=false); STOPS.forEach((s,i)=>{ s.wp.classList.toggle("on",i===0); s.li.classList.toggle("on",i===0); });
   CARS.forEach(c=>c.gapCur=c.park); $("arrived").classList.remove("show"); mode="idle"; nextText();
   $("start").disabled=false; $("start").textContent="Start the journey";
 }
@@ -569,8 +569,16 @@ let last=performance.now();
 function loop(now){
   const dt=Math.min(.05,(now-last)/1000); last=now;
   if(mode==="auto"){
-    const target=Math.min(VMAX, Math.sqrt(2*150*Math.max(0,END-L))+6);
-    v+=(target-v)*Math.min(1,dt*1.5); L=Math.min(END,L+v*dt);
+    if(now<pauseUntil){ v*=Math.max(0,1-dt*8); }          // chai break: convoy waits, then carries on
+    else {
+      const brake=STOPS.find(s=>s.pause && !s.paused && s.L>L-.5);
+      let target=Math.min(VMAX, Math.sqrt(2*150*Math.max(0,END-L))+6);
+      if(brake) target=Math.min(target, Math.sqrt(2*150*Math.max(0,brake.L-L))+3);
+      v+=(target-v)*Math.min(1,dt*1.5);
+      let nl=L+v*dt;
+      if(brake && nl>=brake.L){ nl=brake.L; brake.paused=true; v=0; pauseUntil=now+brake.pause*1000; }
+      L=Math.min(END,nl);
+    }
   } else if(mode==="drag" && dragTo!==null){
     const want=Math.max(LEAD_START,Math.min(END,dragTo));
     const step=Math.max(-240*dt,Math.min(240*dt,(want-L)*Math.min(1,dt*9)));
